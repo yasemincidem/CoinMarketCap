@@ -9,7 +9,9 @@ import { createReducer } from 'reduxsauce'
 import { ListingsLatestTypes } from './Actions'
 
 export const resetLists = () => ({
-  listingsLatest: []
+  listingsLatest: [],
+  loading: true,
+  listingsLatestIsLoading: true,
 });
 
 export const fetchListingsLatest = (state, { start = INITIAL_STATE.start, limit = INITIAL_STATE.limit, currency = 'BTC', sortBy='market_cap', sortDir='asc' }) => ({
@@ -32,7 +34,6 @@ export const fetchListingsLatestSuccess = (state, { listingsLatest }) => ({
   listingsLatest: [...state.listingsLatest, ...listingsLatest],
   listingsLatestIsLoading: false,
   listingsLatestErrorMessage: null,
-  refreshing: false,
   loading: false,
 });
 
@@ -41,6 +42,7 @@ export const fetchListingsLatestFailure = (state, { errorMessage }) => ({
   listingsLatest: {},
   listingsLatestIsLoading: false,
   listingsLatestErrorMessage: errorMessage,
+  loading: false,
 });
 
 /**

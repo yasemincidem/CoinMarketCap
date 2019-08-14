@@ -1,4 +1,3 @@
-import 'whatwg-fetch';
 import {Config} from '../Config';
 
 /**

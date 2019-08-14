@@ -1,17 +1,18 @@
 // @flow
 import React, {Fragment} from 'react';
 import {View, FlatList, compose} from 'react-native';
-import {ListItem, Text} from 'react-native-elements';
+import {ListItem} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import ListingsLatestActions from '../../Stores/ListingsLatest/Actions';
 import {
-  selectListingsLatest, selectSortBy,
+  selectListingsLatest, selectLoading, selectSortBy,
   selectStart,
 } from '../../Stores/ListingsLatest/Selectors';
 import Operations from './components/Operations';
 import SortByModal from './components/SortByModal';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
+import Loading from '../../Components/Loading';
 
 const FlatListItem = styled(ListItem).attrs({
   subtitleStyle: {
@@ -107,6 +108,9 @@ class ListingsLatestContainer extends React.Component<Props, State> {
   };
 
   render() {
+    if (this.props.loading) {
+      return <Loading />
+    }
     return (<Fragment>
         <Operations
           sortDir={this.state.sortDir}
@@ -155,6 +159,7 @@ export const mapStateToProps = createStructuredSelector({
   listingsLatest: selectListingsLatest(),
   start: selectStart(),
   sortBy: selectSortBy(),
+  loading: selectLoading(),
 });
 
 const mapDispatchToProps = (dispatch) => ({

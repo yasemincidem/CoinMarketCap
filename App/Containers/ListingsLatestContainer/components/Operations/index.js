@@ -1,6 +1,6 @@
 // @flow
 import {Button, Icon} from 'react-native-elements';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import React from 'react';
 
 const Container = styled.View`

@@ -1,13 +1,13 @@
 import 'react-native';
 import React from 'react';
 import {shallow} from "react-native/jest/renderer";
-import App from '../App';
+import SortByModal from '../index';
 
-describe('App', () => {
+describe('SortBy Modal', () => {
   const defaultProps = {};
   const createWrapper = (customProps) => {
     const props = {...defaultProps, ...customProps};
-    return shallow(<App {...props} />);
+    return shallow(<SortByModal {...props} />);
   };
   it('should be rendered correctly', () => {
     const wrapper = createWrapper();

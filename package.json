@@ -14,6 +14,7 @@
     "react-native": "0.60.4",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.3.0",
+    "react-native-spinkit": "^1.4.1",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^3.11.1",
     "react-redux": "^7.1.0",
@@ -23,10 +24,19 @@
     "redux-saga": "^1.0.5",
     "reduxsauce": "^1.1.0",
     "reselect": "^4.0.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "styled-components-test-utils": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
     "@babel/runtime": "^7.5.5",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.8.0",
@@ -36,6 +46,19 @@
     "react-test-renderer": "16.8.6"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFiles": [
+      "./jest.setup.js"
+    ],
+    "modulePathIgnorePatterns": [
+      "e2e"
+    ],
+    "testMatch": [
+      "**/*-test.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|react-clone-referenced-element|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|sentry-expo|native-base|@react-native-community/.*))"
+    ],
+    "coverageDirectory": "<rootDir>/reporters/coverage"
   }
 }

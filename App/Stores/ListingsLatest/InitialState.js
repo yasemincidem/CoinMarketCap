@@ -6,4 +6,5 @@ export const INITIAL_STATE = {
   limit: 20,
   currency: 'BTC',
   sortBy: 'market_cap',
+  loading: false,
 };

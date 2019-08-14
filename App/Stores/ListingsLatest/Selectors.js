@@ -29,6 +29,10 @@ const selectSortDir = () => createSelector(
   selectListings,
   (state) => state.sortDir,
 );
+const selectLoading = () => createSelector(
+  selectListings,
+  (state) => state.listingsLatestIsLoading,
+);
 export {
   selectListingsLatest,
   selectStart,
@@ -36,5 +40,6 @@ export {
   selectCurrency,
   selectSortBy,
   selectLimitTo,
-  selectSortDir
+  selectSortDir,
+  selectLoading
 }

@@ -2,6 +2,8 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation'
 
 import ListingsLatestContainer from '../Containers/ListingsLatestContainer'
+import React from 'react';
+import {Text} from 'react-native-elements';
 
 /**
  * The root screen contains the application's navigation.
@@ -19,12 +21,14 @@ const StackNavigator = createStackNavigator(
     initialRouteName: 'ListingsLatestContainer',
     // See https://reactnavigation.org/docs/en/stack-navigator.html#stacknavigatorconfig
     defaultNavigationOptions: {
+      title: 'Coin Market Cap',
       headerStyle: {
-        backgroundColor: '#f4511e',
+        backgroundColor: '#fff',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
-        fontWeight: 'bold',
+        fontWeight: '600',
+        color: 'black'
       },
     },
   }

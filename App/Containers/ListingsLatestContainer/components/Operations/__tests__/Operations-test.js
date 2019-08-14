@@ -1,13 +1,13 @@
 import 'react-native';
 import React from 'react';
 import {shallow} from "react-native/jest/renderer";
-import App from '../App';
+import Operations from '../index';
 
-describe('App', () => {
+describe('Operation Component', () => {
   const defaultProps = {};
   const createWrapper = (customProps) => {
     const props = {...defaultProps, ...customProps};
-    return shallow(<App {...props} />);
+    return shallow(<Operations {...props} />);
   };
   it('should be rendered correctly', () => {
     const wrapper = createWrapper();

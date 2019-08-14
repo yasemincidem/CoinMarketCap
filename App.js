@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { SafeAreaView } from 'react-native'
 import { Provider } from 'react-redux'
 import createStore from './App/Stores/CreateStore'
 import AppNavigator from './App/Navigators/AppNavigators'
@@ -20,9 +19,7 @@ export default class App extends Component<*,*> {
          * for example `loading={<SplashScreen />}`.
          * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
          */}
-         <SafeAreaView style={{ flex: 1 }}>
-           <AppNavigator />
-         </SafeAreaView>
+        <AppNavigator />
       </Provider>
     )
   }
