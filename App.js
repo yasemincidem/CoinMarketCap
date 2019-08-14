@@ -20,7 +20,7 @@ export default class App extends Component<*,*> {
          * for example `loading={<SplashScreen />}`.
          * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
          */}
-         <SafeAreaView>
+         <SafeAreaView style={{ flex: 1 }}>
            <ListingsLatestContainer />
          </SafeAreaView>
       </Provider>

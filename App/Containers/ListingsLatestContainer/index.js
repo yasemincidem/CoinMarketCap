@@ -1,14 +1,11 @@
-import React from 'react';
-import { View, FlatList, ActivityIndicator, compose } from "react-native";
-import { ListItem, SearchBar } from "react-native-elements";
+import React, {Fragment} from 'react';
+import { View, FlatList, compose } from "react-native";
+import {Button, ListItem, Text} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import ListingsLatestActions from '../../Stores/ListingsLatest/Actions'
 import {
-  selectLimit,
   selectListingsLatest,
-  selectLoading,
-  selectRefreshing,
   selectStart,
 } from '../../Stores/ListingsLatest/Selectors';
 
@@ -24,9 +21,7 @@ class ListingsLatestContainer extends React.Component {
 
   handleLoadMore = () => {
     if (!this.onEndReachedCalledDuringMomentum) {
-      const { start, limit } = this.props;
-      console.log('start', start + 20);
-      console.log('limit', limit);
+      const { start } = this.props;
       this.makeRemoteRequest(start + 20);
       this.onEndReachedCalledDuringMomentum = true;
     }
@@ -37,61 +32,86 @@ class ListingsLatestContainer extends React.Component {
       <View
         style={{
           height: 1,
-          width: "86%",
           backgroundColor: "#CED0CE",
-          marginLeft: "14%"
         }}
       />
     );
   };
 
-  renderFooter = () => {
-    if (!this.props.loading) return null;
-
-    return (
-      <View
-        style={{
-          paddingVertical: 20,
-          borderTopWidth: 1,
-          borderColor: "#CED0CE"
-        }}
-      >
-        <ActivityIndicator animating size="large" />
-      </View>
-    );
+  formatWithFloat = (price) => {
+    return Math.round(price*100000000)/100000000;
   };
 
   render() {
-    console.log('listingsLatest', this.props.listingsLatest);
-    return (<FlatList
+    return (<Fragment>
+        <View style={{ height: 70,
+          display: 'flex',
+          borderWidth: 1,
+          borderRadius: 2,
+          borderColor: '#CED0CE',
+          shadowOpacity: 0.75,
+          shadowRadius: 5,
+          shadowColor: '#b3afaf',
+          shadowOffset: { height: 0, width: 0 },
+          backgroundColor: '#f1f1f1',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+        }}>
+
+          <Button
+            buttonStyle={{height: 35, width: 50, borderRadius: 20, backgroundColor: 'white', borderStyle: 'solid', borderWidth: 1, borderColor: '#e3e4e3'}}
+            title='BTC'
+            titleStyle={{ fontSize: 12, color: 'black' }}
+          />
+          <Button
+            buttonStyle={{height: 35, width: 100, borderRadius: 20, backgroundColor: 'white', borderStyle: 'solid', borderWidth: 1, borderColor: '#e3e4e3'}}
+            title='Sort by Rank'
+            titleStyle={{ fontSize: 12, color: 'black' }}
+          />
+          <Button
+            buttonStyle={{height: 35, width: 60, borderRadius: 20, backgroundColor: 'white', borderStyle: 'solid', borderWidth: 1, borderColor: '#e3e4e3'}}
+            title='% 1(h)'
+            titleStyle={{ fontSize: 12, color: 'black' }}
+          />
+          <Button
+            buttonStyle={{height: 35, width: 80, borderRadius: 20, backgroundColor: 'white', borderStyle: 'solid', borderWidth: 1, borderColor: '#e3e4e3'}}
+            title='Top 100'
+            titleStyle={{ fontSize: 12, color: 'black' }}
+          />
+        </View>
+      <FlatList
         data={this.props.listingsLatest}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <ListItem
-            roundAvatar
+            leftElement={<Text style={{ fontSize: 12, color: 'gray'}}>{`${index+1} `}</Text>}
             title={`${item.name}`}
-            containerStyle={{ borderBottomWidth: 0 }}
+            subtitle={item.symbol}
+            titleStyle={{ fontSize: 12, fontWeight: '600' }}
+            subtitleStyle={{ color: 'gray' }}
+            leftAvatar={{ source: { uri: `https://s2.coinmarketcap.com/static/img/coins/128x128/${item.id}.png` } }}
+            rightTitle={`${this.formatWithFloat(item.quote['BTC'].price)} ${'BTC'}`}
+            rightTitleStyle={{ fontSize: 10, fontWeight: '600', color: 'black' }}
+            rightSubtitle={`MCap ${item.quote['BTC'].market_cap.toFixed()} ${'BTC'}`}
+            rightSubtitleStyle={{ fontSize: 10 }}
+            rightSubtitleProps={{ ellipsizeMode: 'tail', numberOfLines: 1 }}
+            rightTitleProps={{ ellipsizeMode: 'tail', numberOfLines: 1 }}
           />
         )}
         keyExtractor={item => item.name}
         ItemSeparatorComponent={this.renderSeparator}
-        ListFooterComponent={this.renderFooter}
         onEndReached={this.handleLoadMore}
         onEndReachedThreshold={0.5}
         onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false; }}
       />
+      </Fragment>
     );
   }
-};
-
-ListingsLatestContainer.propTypes = {
 };
 
 export const mapStateToProps = createStructuredSelector({
   listingsLatest: selectListingsLatest(),
   start: selectStart(),
-  limit: selectLimit(),
-  refreshing: selectRefreshing(),
-  loading: selectLoading(),
 });
 
 const mapDispatchToProps = (dispatch) => ({

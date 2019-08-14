@@ -4,6 +4,4 @@ export const INITIAL_STATE = {
   listingsLatestErrorMessage: null,
   start: 1,
   limit: 20,
-  refreshing: false,
-  loading: false,
 };
