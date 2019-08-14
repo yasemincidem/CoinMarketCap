@@ -3,22 +3,23 @@ import React from 'react';
 import {Modal} from 'react-native';
 import styled from 'styled-components/native';
 import {Text} from 'react-native-elements';
+import * as colors from '../../../../Theme/Colors';
 
 const Overlay = styled.TouchableOpacity`
   flex: 1;
   display: flex;
   justify-content: flex-end;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: ${colors.overlay};
   padding-bottom: 30px
 `;
 const Container = styled.View`
   justify-content: center;
   border-radius: 6px;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: ${colors.white};
 `;
 const Header = styled.View`
-  background-color: #f1f1f1;
+  background-color: ${colors.seaShell};
   height: 40px;
   justify-content: center;
   padding-left: 20px;

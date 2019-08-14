@@ -2,18 +2,19 @@
 import {Button, Icon} from 'react-native-elements';
 import styled from 'styled-components/native';
 import React from 'react';
+import * as colors from '../../../../Theme/Colors';
 
 const Container = styled.View`
   height: 70;
   display: flex;
   border-width: 1px;
   border-radius: 2px;
-  border-color: #CED0CE;
+  border-color: ${colors.pumice};
   shadow-opacity: 0.75px;
   shadow-radius: 5px;
-  shadow-color: #b3afaf;
+  shadow-color: ${colors.nobel};
   shadow-offset: {height: 0, width: 0};
-  background-color: #f1f1f1;
+  background-color: ${colors.seaShell};
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
@@ -22,12 +23,12 @@ const StyledButton = styled(Button).attrs({
   buttonStyle: {
     height: 35,
     borderRadius: 20,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: '#e3e4e3',
+    borderColor: colors.grayNurse,
   },
-  titleStyle: {fontSize: 12, color: 'black'},
+  titleStyle: {fontSize: 12, color: colors.black},
 })`
     width: ${props => props.size || '50px'}
 `;

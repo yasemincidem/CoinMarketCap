@@ -1,0 +1,11 @@
+export const blueRibbon = '#005DE8';
+export const primary = blueRibbon;
+export const alabasterGrey = '#f9f9f9';
+export const background = alabasterGrey;
+export const pumice = '#CED0CE';
+export const nobel = '#b3afaf';
+export const seaShell = '#f1f1f1';
+export const white = '#FFFFFF';
+export const grayNurse = '#e3e4e3';
+export const black = '#000';
+export const overlay = 'rgba(0, 0, 0, 0.75)';

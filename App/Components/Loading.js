@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
 import Spinner from './Spinner';
-import * as colors from '../../colors'
+import * as colors from '../Theme/Colors'
 
 const Container = styled.View`
   flex: 1;

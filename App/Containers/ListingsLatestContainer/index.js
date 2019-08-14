@@ -13,10 +13,11 @@ import Operations from './components/Operations';
 import SortByModal from './components/SortByModal';
 import styled from 'styled-components/native';
 import Loading from '../../Components/Loading';
+import * as colors from '../../Theme/Colors';
 
 const FlatListItem = styled(ListItem).attrs({
   subtitleStyle: {
-    color: 'gray'
+    color: colors.nobel
   },
   titleStyle: {
     fontSize: 12,
@@ -25,7 +26,7 @@ const FlatListItem = styled(ListItem).attrs({
   rightTitleStyle:{
     fontSize: 10,
     fontWeight: '600',
-    color: 'black'
+    color: colors.black
   },
   rightSubtitleStyle:{
     fontSize: 10
@@ -34,7 +35,7 @@ const FlatListItem = styled(ListItem).attrs({
 
 const Index = styled.Text`
   font-size: 12px;
-  color: gray;
+  color: ${colors.nobel};
 `;
 
 type Props = {

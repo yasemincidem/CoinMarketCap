@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import ReactNativeSpinner from 'react-native-spinkit';
-import * as colors from '../../colors'
+import * as colors from '../Theme/Colors'
 
 type Props = {
   color: string,
