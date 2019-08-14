@@ -32,7 +32,7 @@ const FlatListItem = styled(ListItem).attrs({
 })``;
 
 const Index = styled.Text`
-  font-size: 12;
+  font-size: 12px;
   color: gray;
 `;
 

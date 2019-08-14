@@ -9,11 +9,11 @@ const Overlay = styled.TouchableOpacity`
   display: flex;
   justify-content: flex-end;
   background-color: rgba(0, 0, 0, 0.75);
-  padding-bottom: 30
+  padding-bottom: 30px
 `;
 const Container = styled.View`
   justify-content: center;
-  border-radius: 6;
+  border-radius: 6px;
   width: 100%;
   background-color: #FFFFFF;
 `;
@@ -24,7 +24,7 @@ const Header = styled.View`
   padding-left: 20px;
 `;
 const Item = styled.TouchableOpacity`
-  padding: 20;
+  padding: 20px;
 `;
 type Props = {
   resetLists: Function,
