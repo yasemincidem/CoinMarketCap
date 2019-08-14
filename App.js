@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { SafeAreaView } from 'react-native'
 import { Provider } from 'react-redux'
 import createStore from './App/Stores/CreateStore'
-import ListingsLatestContainer from './App/Containers/ListingsLatestContainer/index'
+import AppNavigator from './App/Navigators/AppNavigators'
 
 const { store } = createStore();
 
@@ -21,7 +21,7 @@ export default class App extends Component<*,*> {
          * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
          */}
          <SafeAreaView style={{ flex: 1 }}>
-           <ListingsLatestContainer />
+           <AppNavigator />
          </SafeAreaView>
       </Provider>
     )

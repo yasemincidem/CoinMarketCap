@@ -1,7 +1,7 @@
 
 import { createAppContainer, createStackNavigator } from 'react-navigation'
 
-import ListingsLatestContainer from 'App/Containers/ListingsLatestContainer'
+import ListingsLatestContainer from '../Containers/ListingsLatestContainer'
 
 /**
  * The root screen contains the application's navigation.
