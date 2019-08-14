@@ -8,6 +8,12 @@ import { INITIAL_STATE } from './InitialState'
 import { createReducer } from 'reduxsauce'
 import { ListingsLatestTypes } from './Actions'
 
+export const fetchListingsLatest = (state, { start = INITIAL_STATE.start, limit = INITIAL_STATE.limit }) => ({
+  ...state,
+  start,
+  limit,
+});
+
 export const fetchListingsLatestLoading = (state) => ({
   ...state,
   listingsLatestIsLoading: true,
@@ -16,9 +22,11 @@ export const fetchListingsLatestLoading = (state) => ({
 
 export const fetchListingsLatestSuccess = (state, { listingsLatest }) => ({
   ...state,
-  listingsLatest,
+  listingsLatest: [...state.listingsLatest, ...listingsLatest],
   listingsLatestIsLoading: false,
   listingsLatestErrorMessage: null,
+  refreshing: false,
+  loading: false,
 });
 
 export const fetchListingsLatestFailure = (state, { errorMessage }) => ({
@@ -32,6 +40,7 @@ export const fetchListingsLatestFailure = (state, { errorMessage }) => ({
  * @see https://github.com/infinitered/reduxsauce#createreducer
  */
 export const ListingsLatestReducers = createReducer(INITIAL_STATE, {
+  [ListingsLatestTypes.FETCH_LISTINGS_LATEST]: fetchListingsLatest,
   [ListingsLatestTypes.FETCH_LISTINGS_LATEST_LOADING]: fetchListingsLatestLoading,
   [ListingsLatestTypes.FETCH_LISTINGS_LATEST_SUCCESS]: fetchListingsLatestSuccess,
   [ListingsLatestTypes.FETCH_LISTINGS_LATEST_FAILURE]: fetchListingsLatestFailure,

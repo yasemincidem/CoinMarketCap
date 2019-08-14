@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
+import { SafeAreaView } from 'react-native'
 import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/lib/integration/react'
 import createStore from './App/Stores/CreateStore'
 import ListingsLatestContainer from './App/Containers/ListingsLatestContainer/index'
 
-const { store, persistor } = createStore();
+const { store } = createStore();
 
 export default class App extends Component<*,*> {
   render() {
@@ -20,9 +20,9 @@ export default class App extends Component<*,*> {
          * for example `loading={<SplashScreen />}`.
          * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
          */}
-        <PersistGate loading={null} persistor={persistor}>
-          <ListingsLatestContainer />
-        </PersistGate>
+         <SafeAreaView>
+           <ListingsLatestContainer />
+         </SafeAreaView>
       </Provider>
     )
   }

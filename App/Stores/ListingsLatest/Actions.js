@@ -6,7 +6,7 @@ import { createActions } from 'reduxsauce';
  */
 const { Types, Creators } = createActions({
   // Fetch listings latest
-  fetchListingsLatest: null,
+  fetchListingsLatest: ['start'],
   // The operation has started and is loading
   fetchListingsLatestLoading: null,
   // Listings latest were successfully fetched

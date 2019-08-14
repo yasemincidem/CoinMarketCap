@@ -1,10 +1,13 @@
-import { call, put } from 'redux-saga/effects';
+import { call, put, select } from 'redux-saga/effects';
 import ApiService  from '../Services/ApiService';
 import ListingsLatestActions from '../Stores/ListingsLatest/Actions';
+import {selectLimit, selectListingsLatest, selectStart} from '../Stores/ListingsLatest/Selectors';
 
 export function* fetchListingsLatest() {
+  const start = yield select(selectStart());
+  const limit = yield select(selectLimit());
   yield put(ListingsLatestActions.fetchListingsLatestLoading());
-  const listingsLatest = yield call(ApiService, 'listings/latest', {
+  const listingsLatest = yield call(ApiService, `listings/latest?start=${start}&limit=${limit}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',

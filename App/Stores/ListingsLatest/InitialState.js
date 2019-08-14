@@ -1,7 +1,9 @@
-import {Record} from 'immutable';
-
-export const INITIAL_STATE = Record({
-  listingsLatest: {},
+export const INITIAL_STATE = {
+  listingsLatest: [],
   listingsLatestIsLoading: false,
   listingsLatestErrorMessage: null,
-});
+  start: 1,
+  limit: 20,
+  refreshing: false,
+  loading: false,
+};

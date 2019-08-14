@@ -1,6 +1,5 @@
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import createSagaMiddleware from 'redux-saga'
-import { persistReducer, persistStore } from 'redux-persist'
 import root from '../Sagas';
 /**
  * This import defaults to localStorage for web and AsyncStorage for react-native.
@@ -11,19 +10,7 @@ import root from '../Sagas';
  * If you need to store sensitive information, use redux-persist-sensitive-storage.
  * @see https://github.com/CodingZeal/redux-persist-sensitive-storage
  */
-import storage from 'redux-persist/lib/storage'
 import {ListingsLatestReducers} from './ListingsLatest/Reducers';
-
-const persistConfig = {
-  key: 'root',
-  storage: storage,
-  /**
-   * Blacklist state that we do not need/want to persist
-   */
-  blacklist: [
-    // 'auth',
-  ],
-};
 
 export default () => {
   const rootReducer = combineReducers({
@@ -43,14 +30,10 @@ export default () => {
 
   enhancers.push(applyMiddleware(...middleware));
 
-  // Redux persist
-  const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-  const store = createStore(persistedReducer, compose(...enhancers));
-  const persistor = persistStore(store);
+  const store = createStore(rootReducer, compose(...enhancers));
 
   // Kick off the root saga
   sagaMiddleware.run(root);
 
-  return { store, persistor }
+  return { store }
 }
