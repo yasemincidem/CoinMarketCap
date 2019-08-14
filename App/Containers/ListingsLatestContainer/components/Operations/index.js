@@ -1,3 +1,4 @@
+// @flow
 import {Button, Icon} from 'react-native-elements';
 import styled from 'styled-components';
 import React from 'react';
@@ -31,7 +32,16 @@ const StyledButton = styled(Button).attrs({
     width: ${props => props.size || '50px'}
 `;
 
-class Operations extends React.Component {
+type Props = {
+  defaultCurrency: string,
+  sortBy: string,
+  sortDir: string,
+  setState: Function,
+  resetLists: Function,
+  fetchListingsLatest: Function,
+  isVisibleSortByModal: boolean,
+};
+class Operations extends React.PureComponent<Props> {
 
   renderCurrency = () => {
     let defaultCurrency;

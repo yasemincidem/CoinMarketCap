@@ -1,3 +1,4 @@
+// @flow
 import React, {Fragment} from 'react';
 import {View, FlatList, compose} from 'react-native';
 import {ListItem, Text} from 'react-native-elements';
@@ -10,8 +11,47 @@ import {
 } from '../../Stores/ListingsLatest/Selectors';
 import Operations from './components/Operations';
 import SortByModal from './components/SortByModal';
+import styled from 'styled-components';
 
-class ListingsLatestContainer extends React.Component {
+const FlatListItem = styled(ListItem).attrs({
+  subtitleStyle: {
+    color: 'gray'
+  },
+  titleStyle: {
+    fontSize: 12,
+    fontWeight: '600'
+  },
+  rightTitleStyle:{
+    fontSize: 10,
+    fontWeight: '600',
+    color: 'black'
+  },
+  rightSubtitleStyle:{
+    fontSize: 10
+  }
+})``;
+
+const Index = styled.Text`
+  font-size: 12;
+  color: gray;
+`;
+
+type Props = {
+  fetchListingsLatest: Function,
+  resetLists: Function,
+  sortBy: string,
+  listingsLatest: Array<Object>,
+  start: number,
+};
+
+type State = {
+  isVisibleSortByModal: boolean,
+  isVisibleLimitToModal: boolean,
+  defaultCurrency: string,
+  sortDir: string
+};
+
+class ListingsLatestContainer extends React.Component<Props, State> {
 
   constructor() {
     super();
@@ -22,6 +62,8 @@ class ListingsLatestContainer extends React.Component {
       sortDir: 'desc',
     };
   }
+
+  onEndReachedCalledDuringMomentum: boolean;
 
   componentDidMount() {
     this.makeRemoteRequest();
@@ -77,17 +119,13 @@ class ListingsLatestContainer extends React.Component {
         <FlatList
           data={this.props.listingsLatest}
           renderItem={({item, index}) => (
-            <ListItem
-              leftElement={<Text style={{fontSize: 12, color: 'gray'}}>{`${index + 1} `}</Text>}
+            <FlatListItem
+              leftElement={<Index>{`${index + 1} `}</Index>}
               title={`${item.name}`}
               subtitle={item.symbol}
-              titleStyle={{fontSize: 12, fontWeight: '600'}}
-              subtitleStyle={{color: 'gray'}}
               leftAvatar={{source: {uri: `https://s2.coinmarketcap.com/static/img/coins/128x128/${item.id}.png`}}}
               rightTitle={this.getPrice(item)}
-              rightTitleStyle={{fontSize: 10, fontWeight: '600', color: 'black'}}
               rightSubtitle={`MCap ${item.quote[this.state.defaultCurrency].market_cap ? item.quote[this.state.defaultCurrency].market_cap.toFixed() : 0} ${this.state.defaultCurrency}`}
-              rightSubtitleStyle={{fontSize: 10}}
               rightSubtitleProps={{ellipsizeMode: 'tail', numberOfLines: 1}}
               rightTitleProps={{ellipsizeMode: 'tail', numberOfLines: 1}}
             />

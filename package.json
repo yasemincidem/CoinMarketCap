@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "connected-react-router": "^6.5.2",
+    "flow-bin": "^0.105.2",
     "react": "16.8.6",
     "react-native": "0.60.4",
     "react-native-elements": "^1.1.0",
     "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^3.11.1",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
@@ -28,6 +30,7 @@
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.8.0",
     "eslint": "^6.1.0",
+    "flow-typed": "^2.3.0",
     "jest": "^24.8.0",
     "react-test-renderer": "16.8.6"
   },
