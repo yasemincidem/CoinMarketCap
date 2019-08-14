@@ -67,6 +67,7 @@ class ListingsLatestContainer extends React.Component<Props, State> {
   onEndReachedCalledDuringMomentum: boolean;
 
   componentDidMount() {
+    this.props.resetLists();
     this.makeRemoteRequest();
   }
 

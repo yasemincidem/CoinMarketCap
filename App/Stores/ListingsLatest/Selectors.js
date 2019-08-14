@@ -31,7 +31,7 @@ const selectSortDir = () => createSelector(
 );
 const selectLoading = () => createSelector(
   selectListings,
-  (state) => state.listingsLatestIsLoading,
+  (state) => state.loading,
 );
 export {
   selectListingsLatest,

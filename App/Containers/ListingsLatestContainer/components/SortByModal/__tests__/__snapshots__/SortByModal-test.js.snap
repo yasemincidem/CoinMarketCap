@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortBy Modal should be rendered correctly 1`] = `<SortByModal />`;
