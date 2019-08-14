@@ -4,4 +4,6 @@ export const INITIAL_STATE = {
   listingsLatestErrorMessage: null,
   start: 1,
   limit: 20,
+  currency: 'BTC',
+  sortBy: 'market_cap',
 };

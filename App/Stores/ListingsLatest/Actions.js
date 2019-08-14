@@ -5,8 +5,9 @@ import { createActions } from 'reduxsauce';
  * @see https://github.com/infinitered/reduxsauce#createactions
  */
 const { Types, Creators } = createActions({
+  resetLists: null,
   // Fetch listings latest
-  fetchListingsLatest: ['start'],
+  fetchListingsLatest: ['start', 'currency', 'sortBy', 'sortDir'],
   // The operation has started and is loading
   fetchListingsLatestLoading: null,
   // Listings latest were successfully fetched

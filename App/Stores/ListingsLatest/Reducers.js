@@ -8,10 +8,17 @@ import { INITIAL_STATE } from './InitialState'
 import { createReducer } from 'reduxsauce'
 import { ListingsLatestTypes } from './Actions'
 
-export const fetchListingsLatest = (state, { start = INITIAL_STATE.start, limit = INITIAL_STATE.limit }) => ({
+export const resetLists = () => ({
+  listingsLatest: []
+});
+
+export const fetchListingsLatest = (state, { start = INITIAL_STATE.start, limit = INITIAL_STATE.limit, currency = 'BTC', sortBy='market_cap', sortDir='asc' }) => ({
   ...state,
   start,
   limit,
+  currency,
+  sortBy,
+  sortDir,
 });
 
 export const fetchListingsLatestLoading = (state) => ({
@@ -40,6 +47,7 @@ export const fetchListingsLatestFailure = (state, { errorMessage }) => ({
  * @see https://github.com/infinitered/reduxsauce#createreducer
  */
 export const ListingsLatestReducers = createReducer(INITIAL_STATE, {
+  [ListingsLatestTypes.RESET_LISTS]: resetLists,
   [ListingsLatestTypes.FETCH_LISTINGS_LATEST]: fetchListingsLatest,
   [ListingsLatestTypes.FETCH_LISTINGS_LATEST_LOADING]: fetchListingsLatestLoading,
   [ListingsLatestTypes.FETCH_LISTINGS_LATEST_SUCCESS]: fetchListingsLatestSuccess,
