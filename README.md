@@ -18,6 +18,8 @@ Sagas are triggered by Redux actions and can also trigger Redux actions to alter
 
 Redux to help manage state
 
+Infinite scroll
+
 Styled compoenents to utilising tagged template literals
 
 Flow for prop type checking mechnanism
